@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>mobile js test page</title>
+    <link rel="stylesheet" href="./lib/testRunner.css">
+    <style>
+        .ui-icon {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+        }
+        #checkABoxTest .ui-icon-checkbox-on {
+            background-color: green;
+        }
+		#checkABoxTest .ui-icon-checkbox-off {
+            background-color: red;
+        }
+    </style>
+    
+    <!-- libs -->
+    <script src="http://yui.yahooapis.com/3.9.1/build/yui/yui-min.js"></script>
+    <script src="../external/jquery.js"></script>
+    
+    <!-- files under  test -->
+    <script src="../lib/checkABox.js"></script>
+  
+    <!-- tests -->
+    <script>
+        var allITestCases = {
+            basePath: ".",
+            testCases: [
+                "checkABoxTest"
+            ]};
+    </script>
+    
+    <!-- exec tests -->
+    <script src="./lib/testRunner.js"></script>
+</head>
+<body class="yui3-skin-sam  yui-skin-sam"></body>
+</html>
