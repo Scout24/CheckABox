@@ -5,9 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Checkabox by ImmobilienScout24</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" href="stylesheets/readme.css">
+    <link rel="stylesheet" href="stylesheets/styles.css" />
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
+    <link rel="stylesheet" href="external/highlightjsjs/styles/github.css" />
+    <link rel="stylesheet" href="external/FortAwesome/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="stylesheets/readme.css" />
+
+<style id="demoStyles">
+  label {
+    display: block;
+    cursor: pointer;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  input[type='checkbox'], input[type='radio'] {
+    display: none;
+  }
+  .faExample label {
+    font-size: 1.5em;
+    vertical-align: middle;
+    margin: 5px 0 5px 25px;
+  }
+  .faExample .ui-icon {
+    border-radius: 15%;
+    font-size: 0.8em;
+    display: inline-block;
+    box-shadow: 0 0 3px 0 rgb(216, 216, 216), inset 0 2px 0 -1px rgba(127, 127, 127, 0.27), 0 3px 7px -3px rgb(53, 53, 53);
+    background-color: #474747;
+    background: linear-gradient(to bottom, #474747 0%, #232323 100%);
+    padding: 7px;
+  }
+  .faExample [class*="icon-"] {
+    color: #444;
+  }
+  .faExample .ui-icon-on {
+    color: #fff;
+    background-color: #0276c2;
+    background: linear-gradient(to bottom, #0276c2 0%, #028ee7 100%);
+    box-shadow: 0 0 3px 1px rgb(216, 216, 216), 0 2px 0 -1px rgba(127, 127, 127, 0.27), inset 0 4px 13px -2px rgba(0, 0, 0, 0.5);
+  }
+  .faExample .ui-icon-round {
+    font-size: 0.7em;
+    padding: 9px 10px;
+    border-radius: 50%;
+  }
+</style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,38 +65,227 @@
 <div class="wrapper">
     <header>
         <h1>CheckABox</h1>
+
         <p>a jQuery plugin to replace html checkboxes and radio-buttons</p>
+
         <p class="view"><a href="https://github.com/ImmobilienScout24/CheckABox">View the Project on GitHub
             <small>ImmobilienScout24/CheckABox</small>
         </a></p>
         <ul>
-            <li><a href="https://github.com/ImmobilienScout24/CheckABox/zipball/master">Download <strong>ZIP File</strong></a></li>
-            <li><a href="https://github.com/ImmobilienScout24/CheckABox/tarball/master">Download <strong>TAR Ball</strong></a></li>
+            <li><a href="https://github.com/ImmobilienScout24/CheckABox/zipball/master">Download <strong>ZIP
+                File</strong></a></li>
+            <li><a href="https://github.com/ImmobilienScout24/CheckABox/tarball/master">Download <strong>TAR
+                Ball</strong></a></li>
             <li><a href="https://github.com/ImmobilienScout24/CheckABox">View On <strong>GitHub</strong></a></li>
         </ul>
     </header>
+
+    <section id="toc">
+        <h2>Content</h2>
+        <ul></ul>
+    </section>
+
     <section>
         <h2>About</h2>
-        <p>CheckABox is a jQuery plugin for improving the default browser layout for html checkboxes and/or radio buttons. It's touch friendly, lightweight, customizable and unit tested.</p>
+        <p>CheckABox is a jquery plugin for improving the default browser
+            layout for html checkboxes and/or radio buttons. It's touch friendly,
+            lightweight, customizable and unit tested.</p>
     </section>
-    
+
     <section>
-        <h2>Example</h2>
-        <p>ToDo</p>
-    </section>    
-    
+        <h2>Demo</h2>
+
+        <section class="faExample">
+
+            <div>
+                <h4>checkbox</h4>
+                <label><input type="checkbox" name="a" value="1" /> clever</label>
+                <label><input type="checkbox" name="b" value="2" checked="checked"/> strong</label>
+                <label><input type="checkbox" name="c" value="3" /> loud</label>
+            </div>
+
+            <div>
+                <h4>radio</h4>
+                <label><input type="radio" name="gender" value="1" checked="checked" /> Male</label>
+                <label><input type="radio" name="gender" value="2" /> Female</label>
+                <label><input type="radio" name="gender" value="2" /> none</label>
+            </div>
+
+        </section>
+
+    </section>
+
+    <section>
+        <h2>Demo JS</h2>
+        <pre class="html"><code id="jsHtml"></code></pre>
+        <p>This code was copied from the script section on render time. So if the demo works this code should be correct.</p>
+    </section>
+
+    <section>
+        <h2>Demo Css</h2>
+        <p>The Demo makes use of <a href="http://fortawesome.github.io/Font-Awesome/">FortAwesome</a> - the iconic font. If you want to use it you need to include it:</p>
+        <pre class="html"><code>&lt;link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" /&gt;</code></pre>
+        <p>Then add this styles into your head section of the html page or put it into a css file.</p>
+        <pre class="html"><code id="cssHtml"></code></pre>
+    </section>
+
+    <section>
+        <h2>Usage</h2>
+        <ul>
+            <li>
+                create input elements with a label
+<pre class="html"><code>&lt;label&gt;
+  &lt;input type="checkbox" name="a" value="1" checked="checked"/&gt; Option A
+&lt;/label&gt;
+</code></pre>
+            </li>
+            <li>
+                import dependency + plugin
+<pre class="html"><code>&lt;script src="http://code.jquery.com/jquery-2.0.0.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="checkABox.js" type="text/javascript"&gt;&lt;/script&gt;
+</code></pre>
+            </li>
+            <li>
+                bind the plugin to the DOM nodes
+<pre class="html"><code>&lt;script&gt;
+  $(function () {
+    $("input[type='checkbox']").checkABox("bind");
+  });
+&lt;/script&gt;
+</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Options</h2>
+        <ul>
+            <li>iconClass - a css class which is added to the icon</li>
+            <li>iconHtml - html which represents the icon (default = '<span></span>')</li>
+            <li>checkedClass - the css class which is added to the icon if the input is checked</li>
+            <li>uncheckedClass - the css class which is added to the icon if the input is not checked</li>
+        </ul>
+        <h3>default options</h3>
+<pre class="json"><code>{
+  "iconClass": "ui-icon",
+  "iconHtml": '&lt;span&gt;&nbsp;&lt;/span&gt;',
+  "checkedClass": "ui-icon-on",
+  "uncheckedClass": "",
+}
+</code></pre>
+        <h3>set custom options on bind</h3>
+<pre class="html"><code>&lt;script&gt;
+  $("input[type='radio']").checkABox("bind", {
+    "iconClass": "ui-icon ui-icon-radio"
+  });
+&lt;/script&gt;
+</code></pre>
+    </section>
+
+    <section>
+        <h2>Actions</h2>
+        <ul>
+            <li>binding
+                <pre><code>$("input").checkABox("bind");</code></pre>
+            </li>
+            <li>toggling
+                <pre><code>$("input").checkABox("toggle");</code></pre>
+            </li>
+            <li>set true/false
+                <pre><code>$("input").checkABox(true);</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Supported Browsers</h2>
+        <p>Tested with:</p>
+        <table>
+            <thead>
+            <tr>
+                <td>Chrome</td>
+                <td>Firefox</td>
+                <td>IE</td>
+                <td>Android</td>
+                <td>iOS</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>25</td>
+                <td>19</td>
+                <td>9</td>
+                <td>4</td>
+                <td>6</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
     <section>
         <h2>Unit Tests</h2>
         <iframe src="./test/index.html"></iframe>
     </section>
+
+
     <footer>
         <p>This project is maintained by <a href="https://github.com/ImmobilienScout24">ImmobilienScout24</a></p>
+
         <p>
-            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+            </small>
         </p>
     </footer>
 </div>
-<script src="javascripts/scale.fix.js"></script>
+
+<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script src="external/highlightjsjs/highlight.pack.js"></script>
+<script src="js/scale.fix.js"></script>
+<script src="lib/checkABox.js"></script>
+
+
+<script id="demoScript">
+  $(function () {
+    var checkboxSelector = ".faExample input[type='checkbox']",
+      radioSelector = ".faExample input[type='radio']";
+
+    $(checkboxSelector).checkABox("bind");
+    $(radioSelector).checkABox("bind", {
+      "iconClass": "ui-icon icon-asterisk ui-icon-round"
+    });
+  });
+</script>
+<script>
+    $(function () {
+        function createTableOfContent() {
+            $("h2").each(function (index, el) {
+                var $el, entryId;
+                if (index === 0) { //skip first
+                    return;
+                }
+                $el = $(el);
+                entryId = $el.text().toLowerCase().replace(" ", "");
+                $el.attr("id", entryId);
+                $("ul", "#toc").append('<li><a href="#' + entryId + '">' + $el.text() + '</a></li>');
+            });
+        }
+
+        function copyCssIntoHtml() {
+            $("#cssHtml").html("&lt;style&gt;" + $("#demoStyles").html() + "&lt;/style&gt;");
+        }
+
+        function copyJSIntoHtml() {
+            $("#jsHtml").html("&lt;script&gt;" + $("#demoScript").html() + "&lt;/script&gt;");
+        }
+
+        createTableOfContent();
+        copyCssIntoHtml();
+        copyJSIntoHtml();
+
+        hljs.tabReplace = '    ';
+        hljs.initHighlightingOnLoad();
+    });
+</script>
 
 </body>
 </html>
