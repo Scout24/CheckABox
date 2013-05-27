@@ -1,26 +1,32 @@
+.yui3-console {
+    float: left;
+    max-width: 590px;
+}
+
 body {
     font-family: sans-serif;
 }
-h3 {
-    margin: 0 0 10px 0;
-}
-.yui3-console {
-    float: left;
-    max-width: 350px;
+#filterContainer h3 {
+    margin: 10px 0;
+    font-size: 15px;
 }
 #filterContainer {
-    float: left;
     display: none;
-    padding-left: 20px;
+    padding-left: 11px;
+    font-size: 15px;
+}
+#filterContainer input {
+    float: left;
+    margin: 0 0 0 10px;
 }
 #filterContainer select {
+    float: left;
     display: block;
     padding: 5px 20px 5px 5px; 
     margin: 0 0 10px 0;
     font-size: 0.8em;
 }
-.separator {
-    height: 20px;
+#filterContainer .separator {
     clear: both;
 }
 .hide {
