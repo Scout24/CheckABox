@@ -3,7 +3,8 @@
 YUI.add('checkABoxTest', function (Y) {
     var assertEquals = Y.Assert.areEqual,
         assertTrue = Y.Assert.isTrue,
-        assertFalse = Y.Assert.isFalse;
+        assertFalse = Y.Assert.isFalse,
+		isTouchDevice = 'ontouchstart' in document.documentElement;
 
     Y.namespace("IS24Test");
 
@@ -42,6 +43,14 @@ YUI.add('checkABoxTest', function (Y) {
         getIcon: function (el) {
           return el.prev();  
         },
+        
+        touch: function (element) {
+			if (isTouchDevice) {
+				element.trigger("touchstart");
+			} else {
+				element.trigger("click");
+			}
+        },
 
         "test checkbox is checked after click": function () {
             var icon, 
@@ -49,10 +58,10 @@ YUI.add('checkABoxTest', function (Y) {
             
             checkBoxes.checkABox("bind");
             icon = this.getIcon(checkBoxes);
-            icon.click();
+            this.touch(icon);
             
             this.assertChecked(checkBoxes);
-        },        
+        },
         
         "test checkbox is not checked after double click": function () {
             var icon, 
@@ -60,8 +69,9 @@ YUI.add('checkABoxTest', function (Y) {
             
             checkBoxes.checkABox("bind");
             icon = this.getIcon(checkBoxes);
-            icon.click();
-            icon.click();
+			
+            this.touch(icon);
+            this.touch(icon);
             
             this.assertNotChecked(checkBoxes);
         },        
@@ -108,7 +118,7 @@ YUI.add('checkABoxTest', function (Y) {
             var checkBoxes = $("#checkBox");                
             
             checkBoxes.checkABox("bind");
-            $("label[for='checkBox']").click();
+            this.touch($("label[for='checkBox']"));
 
             this.assertChecked(checkBoxes);
         },
@@ -117,7 +127,7 @@ YUI.add('checkABoxTest', function (Y) {
             var $radioBoxA = $("#radioBoxA");
             
             $("input[type='radio']", "#" + this.name).checkABox("bind");
-            $radioBoxA.click();
+			this.touch($radioBoxA);
 
             this.assertChecked($radioBoxA);
             this.assertNotChecked($("#radioBoxB"));
@@ -128,8 +138,8 @@ YUI.add('checkABoxTest', function (Y) {
             var $radioBoxA = $("#radioBoxA");
             
             $("input[type='radio']", "#" + this.name).checkABox("bind");
-            $radioBoxA.click();
-            $radioBoxA.click();
+			this.touch($radioBoxA);
+			this.touch($radioBoxA);
 
             this.assertChecked($radioBoxA);
             this.assertNotChecked($("#radioBoxB"));
@@ -140,7 +150,7 @@ YUI.add('checkABoxTest', function (Y) {
             var $radioBoxB = $("#radioBoxB");
             
             $("input[type='radio']", "#" + this.name).checkABox("bind");
-            $($radioBoxB).click();
+			this.touch($radioBoxB);
 
             this.assertChecked($radioBoxB);
             this.assertNotChecked($("#radioBoxA"));
@@ -151,7 +161,7 @@ YUI.add('checkABoxTest', function (Y) {
             var $radioBoxC = $("#radioBoxC");
             
             $("input[type='radio']", "#" + this.name).checkABox("bind");
-            $($radioBoxC).click();
+            this.touch($radioBoxC);
 
             this.assertChecked($radioBoxC);
             this.assertNotChecked($("#radioBoxA"));
@@ -165,9 +175,9 @@ YUI.add('checkABoxTest', function (Y) {
             
             $("input[type='radio']", "#" + this.name).checkABox("bind");
             
-            $radioBoxA.click();
-            $radioBoxB.click();
-            $radioBoxC.click();
+            this.touch($radioBoxA);
+			this.touch($radioBoxB);
+			this.touch($radioBoxC);
 
             this.assertChecked($radioBoxC);
             this.assertNotChecked($radioBoxA);
