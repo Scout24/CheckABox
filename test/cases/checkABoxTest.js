@@ -3,8 +3,7 @@
 YUI.add('checkABoxTest', function (Y) {
     var assertEquals = Y.Assert.areEqual,
         assertTrue = Y.Assert.isTrue,
-        assertFalse = Y.Assert.isFalse,
-		isTouchDevice = 'ontouchstart' in document.documentElement;
+        assertFalse = Y.Assert.isFalse;
 
     Y.namespace("IS24Test");
 
@@ -15,7 +14,7 @@ YUI.add('checkABoxTest', function (Y) {
             var testDiv = $('<div id="' + this.name + '" />');
             
             testDiv.append('<form action="./" method="get">' +
-                '<label for="checkBox"><input id="checkBox" type="checkbox" /></label>' +
+                '<label for="checkBox"><input id="checkBox" type="checkbox" />Label</label>' +
                 '<label for="radioBoxA"><input name="chooseMe" value="a" id="radioBoxA" type="radio" /></label>' +
                 '<label for="radioBoxB"><input name="chooseMe" value="b" id="radioBoxB" type="radio" /></label>' +
                 '<label for="radioBoxC"><input name="chooseMe" value="c" id="radioBoxC" type="radio" /></label>' +
@@ -45,11 +44,7 @@ YUI.add('checkABoxTest', function (Y) {
         },
         
         touch: function (element) {
-			if (isTouchDevice) {
-				element.trigger("touchstart");
-			} else {
-				element.trigger("click");
-			}
+    				element.trigger("mousedown");
         },
 
         "test checkbox is checked after click": function () {
