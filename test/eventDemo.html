@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Checkabox by ImmobilienScout24</title>
+
+  <style id="demoStyles">
+	body {
+		font-family: verdana, arial;
+	}
+    label {
+	  display: inline-block;
+      font-size: 20px;
+	  background-color: #f4f4f4;
+	  padding: 15px;
+    }
+    .ui-icon {
+      display: inline-block;
+      background-color: #474747;
+      height: 20px;
+	  width: 20px;
+    }
+    .ui-icon-on {
+      background-color: #0276c2;
+    }
+    .ui-icon-round {
+      border-radius: 50%;
+    }
+  </style>
+
+</head>
+<body>
+<h2>Event Demo</h2>
+
+<div>
+	<h2>checkbox</h2>
+	<label><input type="checkbox" name="a" value="1" checked="checked"/>clever</label>
+	<label><input type="checkbox" name="b" value="2" />strong</label>
+</div>
+
+<div>
+	<h2>radio</h2>
+	<label><input type="radio" name="gender" value="1" checked="checked" />Male</label>
+	<label><input type="radio" name="gender" value="2" />Female</label>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="../lib/checkABox.js"></script>
+<script>
+  $(function () {
+    $("input:checkbox").checkABox("bind");
+    $("input:radio").checkABox("bind", {
+      "iconClass": "ui-icon ui-icon-round"
+    });
+  });
+</script>
+
+</body>
+</html>
