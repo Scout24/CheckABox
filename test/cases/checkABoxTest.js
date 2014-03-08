@@ -44,7 +44,7 @@ YUI.add('checkABoxTest', function (Y) {
         },
         
         touch: function (element) {
-    				element.trigger("mousedown");
+    				element.trigger("click");
         },
 
         "test checkbox is checked after click": function () {
@@ -171,8 +171,8 @@ YUI.add('checkABoxTest', function (Y) {
             $("input[type='radio']", "#" + this.name).checkABox("bind");
             
             this.touch($radioBoxA);
-			this.touch($radioBoxB);
-			this.touch($radioBoxC);
+            this.touch($radioBoxB);
+            this.touch($radioBoxC);
 
             this.assertChecked($radioBoxC);
             this.assertNotChecked($radioBoxA);

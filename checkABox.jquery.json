@@ -3,7 +3,7 @@
     "title"        : "CheckABox",
     "description"  : "A jQuery plugin to replace the default browser layout of html checkboxes and radio-buttons.",
     "keywords"     : ["checkbox", "radio", "buttons"],
-    "version"      : "0.1.3",
+    "version"      : "0.1.4",
     "author"       : {
         "name"     : "Sebastian Stiehl",
         "email"    : "sebastian.stiehl@immobilienscout24.de",
